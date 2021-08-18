@@ -47,7 +47,7 @@ python3 rgb_preview.py
 - img 폴더 안의 이미지를 읽어 추론 결과 result_img_*.jpg의 형식으로 저장
 
 ## [aqua_yolo.py](https://github.com/IJunSang/depthai-korean/blob/master/src/aqua_yolo.py)
-- roboflow의 public dataset중 하나인 aquarium dataset(https://public.roboflow.com/object-detection/aquarium)을 이용하여 학습
+- roboflow의 public dataset중 하나인 aquarium dataset(https://public.roboflow.com/object-detection/aquarium) 을 이용하여 학습
 
 ## [chess_yolo.py](https://github.com/IJunSang/depthai-korean/blob/master/src/chess_yolo.py)
 - https://blog.roboflow.com/deploy-luxonis-oak/ 링크 참조하여 제작
