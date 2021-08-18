@@ -7,7 +7,7 @@ import time
 
 from numpy.core.defchararray import startswith
 
-nnPath = ("../aqua_yolov3_tiny.blob")
+nnPath = ("../models/aqua_yolov3_tiny.blob")
 
 if len(sys.argv) > 1:
     nnPath = sys.argv[1]

@@ -10,7 +10,7 @@ def create_pipeline():
 
     # yolo 탐지 노드 생성 및 설정
     nn = pipeline.createYoloDetectionNetwork()
-    nn.setBlobPath('../custom_car.blob')
+    nn.setBlobPath('../models/custom_car.blob')
 
     nn.setConfidenceThreshold(0.5)
     nn.setNumClasses(2)

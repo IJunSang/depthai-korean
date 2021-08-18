@@ -12,7 +12,7 @@ labelMap = [ "bishop", "b-bishop", "b-king", "b-knight", "b-pawn", "b-queen", "b
 syncNN = True
 
 # custom model blob file
-nnPath = '../chess_yolov3_tiny.blob'
+nnPath = '../models/chess_yolov3_tiny.blob'
 
 if len(sys.argv) > 1:
     nnPath = sys.argv[1]
