@@ -1,17 +1,26 @@
 # YOLOv5s-OAK
+
 ## 탑재과정
-```flow
-start=>start: Custom Data
-end=>end
-o1=>operation: train.py(python train.py --img 416 --batch 16 --epochs 3 --data dataset.yaml --weights yolov5s.pt --device 0)
-cond1=>condition: best.pth
-o2=>operation: export.py(python export.py --weights runs/train/exp10/weights/best.pt --img 416 --batch 1 --device cpu --include "onnx" --simplify)
-cond2=>conditiion: best.onnx
-o3=>operation: model optimizer(Intel OpenVino)(python3 mo.py --input_model ~/yolov5/best.onnx --model_name yolov5s_custom --data_type FP16 --output_dir ~/yolvo5/ --input_shape "[1, 3, 416, 416]" --reverse_input_channel --scale 255
-)
-cond3=>condition: best.xml, best.bin
-o4=>operation: compile tool(Intel OpenVino)(./compile_tool -m ~/yolvo5/yolov5s_custom.xml -ip U8 -d MYRIAD -VPU_NUMBER_OF_SHAVES 6)
-cond4=>condition: best.blob
-o5=>operation: gen2_yolov5_inf.py
-start->o1->cond1->o2->cond2->o3->cond3->o4->cond4->o5
+![flowchart](./flowchart.png)
+
+## YOLOv5 Repository
+[ultralytics/yolov5yolov5](https://github.com/ultralytics/yolov5)
+
+## Intel OpenVINO
+[Donlaod page](https://software.seek.intel.com/openvino-toolkit)
+
+### openvino compile tool 사용시 libinference_engine.so cannot open shared object ~ 문제 생길경우
 ```
+source <INSTALL_DIR>/bin/setupvars.sh -pyver (your_pyversion)
+```
+## Custom Data
+[AIhub 도로주행영상](https://aihub.or.kr/aidata/8007) 중 train/valid -> 도심로 야간일몰_맑음_30_전방, 도심로 주간일출_강우_30_전방, 자동차전용도로_야간일몰_맑음 30_전방, 자동차전용도로 주간일출_안개_30_전방 사용
+
+### YOLOv5 라벨 format
+Darknet TXT 라벨 format을 따름 (object-class, x, y, width, height)
+object-class: integer number of object from 0 to (classes-1)
+x, y, width, height: float values relative to width and height of image, from (0.0 to 1.0)
+x, y are the center of rectangle
+ex) x = absolute_x / image_width
+
+폴더 안에 각각 train, valid 시 들어갈 이미지들의 경로, 파일명이 포함된 txt파일이 있어야 함(custom_data 폴더 안 train.txt, valid.txt 참조)
