@@ -1,0 +1,6 @@
+path: ./custom/
+train: train.txt
+val: valid.txt
+
+nc: 2
+names: ['car', 'pedestrian']
