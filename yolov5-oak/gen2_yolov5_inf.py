@@ -10,7 +10,7 @@ def create_pipeline():
     pipeline = dai.Pipeline()
 
     nn = pipeline.createNeuralNetwork()
-    nn.setBlobPath('yolov5s_custom.blob')
+    nn.setBlobPath('yolov5s_car.blob')
 
     nn.setNumPoolFrames(4)
     nn.input.setBlocking(False)
